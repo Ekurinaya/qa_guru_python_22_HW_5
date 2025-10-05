@@ -21,6 +21,5 @@ def test_for_demoqa():
     browser.element('#uploadPicture').set_value(str(Path(__file__).parent / 'resources' / 'cat.png'))
     browser.element('#currentAddress').type('Eftorius, 5')
     browser.element('#react-select-3-input').type('NCR').press_enter()
-    browser.element('#react-select-3-input').type('NCR').press_enter()
     browser.element('#react-select-4-input').type('Noida').press_enter()
     browser.element('#submit').should(be.clickable).click()
