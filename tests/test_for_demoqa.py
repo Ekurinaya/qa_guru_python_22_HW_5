@@ -1,4 +1,4 @@
-from selene import browser, be
+from selene import browser, be, have
 from pathlib import Path
 
 def test_for_demoqa():
@@ -22,4 +22,19 @@ def test_for_demoqa():
     browser.element('#currentAddress').type('Eftorius, 5')
     browser.element('#react-select-3-input').type('NCR').press_enter()
     browser.element('#react-select-4-input').type('Noida').press_enter()
-    browser.element('#submit').should(be.clickable).click()
+    browser.element('#submit').click()
+
+    browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
+    browser.element('.table-responsive').all('tr').should(have.texts(
+        'Label Values',
+        'Student Name Ekaterina Kurinaya',
+        'Student Email cat@gmail.com',
+        'Gender Female',
+        'Mobile 1234567890',
+        'Date of Birth 17 January,1995',
+        'Subjects History, Civics',
+        'Hobbies Reading, Music',
+        'Picture cat.png',
+        'Address Eftorius, 5',
+        'State and City NCR Noida'
+    ))
